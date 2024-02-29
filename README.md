@@ -27,7 +27,7 @@
 2. Navigate to the project directory:
 
    ```bash
-   cd Today's-Journal
+   cd journal
    ```
 
 3. Install dependencies:
@@ -52,4 +52,6 @@ This project is licensed under the MIT License. Please refer to the LICENSE file
 
 ### Contact
 
-For any questions or suggestions, feel free to open an issue on this repository or contact the project maintainers (add contact information here).
+For any questions or suggestions, feel free to open an issue on this repository or contact the project maintainer
+    **Twitter**
+    [https://twitter.com/kelly_daniel_o](KellyDanielO)
