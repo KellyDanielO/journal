@@ -17,6 +17,7 @@ import 'features/utils/presentation/getx/bindings/utils_controller_bindings.dart
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Initializing Hive
   await Hive.initFlutter((await getApplicationDocumentsDirectory()).path);
   Hive.registerAdapter(JournalTopicModelAdapter());
   Hive.registerAdapter(JournalTopicWrapperAdapter());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
+    return ScreenUtilInit( // Dynamic sizes across all screen sizes
       builder: (_, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,

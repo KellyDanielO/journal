@@ -1,3 +1,4 @@
+// An abstract class to handle all failures
 abstract class Failure {
   final String message;
 
