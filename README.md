@@ -4,9 +4,8 @@
 
 ### Features
 
-* **Create topics:** Define your goals and break them down into smaller, manageable topics.
+* **Create topics:** Define your goals as a topic.
 * **Daily journaling:** Write entries about your progress towards each topic every day.
-* **Track progress:** Analyze your progress over time and stay motivated on your journey.
 * **Simple and intuitive interface:** Focus on your goals with a clean and easy-to-use design.
 
 ### Getting Started
@@ -21,7 +20,7 @@
 1. Clone this repository:
 
    ```bash
-   git clone https://your_repository_url.git
+   git clone https://github.com/KellyDanielO/journal.git
    ```
 
 2. Navigate to the project directory:
@@ -54,4 +53,7 @@ This project is licensed under the MIT License. Please refer to the LICENSE file
 
 For any questions or suggestions, feel free to open an issue on this repository or contact the project maintainer
     **Twitter**
-    [https://twitter.com/kelly_daniel_o](KellyDanielO)
+    [https://twitter.com/kelly_daniel_o]
+    **Website**
+    [https://kellydanielo.vercel.app/]
+
