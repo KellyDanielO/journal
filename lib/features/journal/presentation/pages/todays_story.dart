@@ -160,6 +160,8 @@ class _TodaysStoryState extends State<TodaysStory> {
                         itemCount: journalController.journalDayValues.length,
                         itemBuilder: (context, index) {
                           final m = journalController.journalDayValues[index];
+                          print(DateFormat('yyyy-MM-dd').format(DateTime.now()));
+                          // print(m.date);
                           return EachDayStory(
                             title: DateFormat.yMMMMEEEEd()
                                 .format(DateTime.parse(m.date))

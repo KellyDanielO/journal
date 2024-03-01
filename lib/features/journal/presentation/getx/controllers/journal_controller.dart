@@ -123,7 +123,7 @@ class JournalController extends GetxController {
   Future<void> createJournalDay(String id) async {
     String message = createInputController.value.text;
     if (message.isNotEmpty) {
-      String date = DateFormat('yyyy-MM-d').format(DateTime.now());
+      String date = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
       JournalDayEntity journalTopicDay =
           JournalDayEntity(date: date, message: message, subTitle: '');
@@ -176,7 +176,7 @@ class JournalController extends GetxController {
   }
 
   void moveToCreate(String id) async {
-    String date = DateFormat('yyyy-MM-d').format(DateTime.now());
+    String date = DateFormat('yyyy-MM-dd').format(DateTime.now());
     final res = await getJournalTopicDayUseCase.call(id, date);
     res.fold((l) {
       Get.toNamed(
