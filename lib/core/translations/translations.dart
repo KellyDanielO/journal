@@ -31,7 +31,10 @@ class Langauages extends Translations {
           'configuration': 'configuration',
           'added': 'added',
           'deleted': 'deleted',
-          'edited': 'edited'
+          'edited': 'edited',
+          'system': 'system',
+          'light': 'light',
+          'dark': 'dark'
         },
         'fr_FR': {
           'select_gender': 'sélectionner le genre',
@@ -61,7 +64,10 @@ class Langauages extends Translations {
           'configuration': 'configuration',
           'added': 'ajouté',
           'deleted': 'supprimé',
-          'edited': 'modifié'
+          'edited': 'modifié',
+          "system": "système",
+          "light": "lumière",
+          "dark": "sombre"
         },
       };
 }

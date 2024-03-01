@@ -7,7 +7,8 @@ import '../../../../../core/router/router_config.dart';
 class UtitlityController extends GetxController {
   RxString gender = 'male'.obs;
   Rx<Locale> currentLocale = const Locale('en', 'US').obs;
-
+  Rx<ThemeMode> themeMode = ThemeMode.system.obs;
+ 
   final AppHandler appHandler = AppHandler();
   String titleType() {
     if (gender.value == 'male') {
@@ -32,6 +33,10 @@ class UtitlityController extends GetxController {
   void setGender(String genderV) {
     gender.value = genderV;
     appHandler.saveGender(genderV);
+  }
+
+  void setTheme(String theme) {
+    appHandler.saveTheme(theme);
   }
 
   void changeLanguage(Locale locale, String lang) {

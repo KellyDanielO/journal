@@ -1,6 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:journal/core/helpers/sizes.dart';
 
 import '../../../../core/helpers/functions.dart';
@@ -25,6 +27,16 @@ class JournalTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Color> colors = [
+      const Color(0xFF596EFF),
+      const Color(0xFFFC5A20),
+      const Color(0xFFFC3165)
+    ];
+    Random random = Random();
+
+    int randomIndex = random.nextInt(colors.length);
+
+    Color randomColor = colors[randomIndex];
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -57,7 +69,7 @@ class JournalTitleWidget extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: Theme.of(context).textTheme.labelSmall!.backgroundColor,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
           ),
           margin: const EdgeInsets.only(bottom: 10),
           width: width,
@@ -68,13 +80,16 @@ class JournalTitleWidget extends StatelessWidget {
                 title,
                 style: Theme.of(context).textTheme.headlineSmall,
                 overflow: TextOverflow.ellipsis,
+                maxLines: 3,
               ),
+              SizedBox(height: 3.h),
               Text(
-                DateFormat.yMMMMEEEEd().format(DateTime.parse(date)).toString(),
+                regularDateFormat(
+                    DateTime.parse(date), getCurrentLocale(context)),
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
-                    .copyWith(fontStyle: FontStyle.italic),
+                    .copyWith(fontWeight: FontWeight.w500),
                 overflow: TextOverflow.ellipsis,
               ),
             ],

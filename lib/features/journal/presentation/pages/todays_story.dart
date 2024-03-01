@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/helpers/app_assets.dart';
+import '../../../../core/helpers/functions.dart';
 import '../../../../core/helpers/sizes.dart';
 import '../../../../core/router/router_config.dart';
 import '../../../utils/presentation/getx/controllers/utils_controller.dart';
@@ -116,12 +116,10 @@ class _TodaysStoryState extends State<TodaysStory> {
                             style: Theme.of(context).textTheme.headlineMedium,
                             overflow: TextOverflow.fade,
                           ),
-                          FittedBox(
-                            child: Text(
-                              title,
-                              style: Theme.of(context).textTheme.headlineMedium,
-                              overflow: TextOverflow.fade,
-                            ),
+                          Text(
+                            title,
+                            style: Theme.of(context).textTheme.headlineSmall,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
@@ -160,13 +158,11 @@ class _TodaysStoryState extends State<TodaysStory> {
                         itemCount: journalController.journalDayValues.length,
                         itemBuilder: (context, index) {
                           final m = journalController.journalDayValues[index];
-                          print(DateFormat('yyyy-MM-dd').format(DateTime.now()));
-                          // print(m.date);
                           return EachDayStory(
-                            title: DateFormat.yMMMMEEEEd()
-                                .format(DateTime.parse(m.date))
-                                .toString(),
+                          date: regularDateFormat(DateTime.parse(m.date),
+                              getCurrentLocale(context)),
                             width: width,
+                            title: m.subTitle,
                             message: m.message,
                             id: id,
                             journalDay: m,

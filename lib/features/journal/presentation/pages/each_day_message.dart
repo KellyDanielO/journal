@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
@@ -29,9 +30,11 @@ class _EachDayMessageState extends State<EachDayMessage> {
     story = Get.arguments['story'] as JournalDayEntity;
     journalController.editDayMode.value = edit;
     journalController.storyMessage.value = story.message;
+    journalController.storyTitle.value = story.subTitle;
     if (edit) {
       journalController.textFieldEditEmpty.value = true;
       journalController.editInputController.value.text = story.message;
+      journalController.editTitleInputController.value.text = story.subTitle;
       journalController.editDayMode.value = true;
     }
     super.initState();
@@ -67,6 +70,8 @@ class _EachDayMessageState extends State<EachDayMessage> {
                       journalController.textFieldEditEmpty.value = true;
                       journalController.editInputController.value.text =
                           journalController.storyMessage.value;
+                      journalController.editTitleInputController.value.text =
+                          journalController.storyTitle.value;
                       journalController.editDayMode.value = true;
                     },
                     icon: HeroIcon(
@@ -86,32 +91,67 @@ class _EachDayMessageState extends State<EachDayMessage> {
             EdgeInsets.symmetric(horizontal: AppSizes.bodyPadding, vertical: 5),
         child: Obx(
           () => journalController.editDayMode.value
-              ? TextField(
-                  autofocus: true,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textInputAction: TextInputAction.newline,
-                  controller: journalController.editInputController.value,
-                  maxLines: 500,
-                  onChanged: (value) {
-                    journalController.typeCounterEdit.value++;
-                  },
-                  decoration: InputDecoration(
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    hintText: '${'todays_messages'.tr.capitalizeFirst}....',
-                    hintStyle: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: AppColors.greyColor),
-                  ),
+              ? Column(
+                  children: <Widget>[
+                    TextField(
+                      autofocus: true,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                      textInputAction: TextInputAction.next,
+                      controller:
+                          journalController.editTitleInputController.value,
+                      maxLines: 1,
+                      decoration: InputDecoration(
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        hintText: '${'title'.tr.capitalizeFirst}',
+                        hintStyle: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ),
+                    Flexible(
+                      child: TextField(
+                        autofocus: true,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        textInputAction: TextInputAction.newline,
+                        controller: journalController.editInputController.value,
+                        maxLines: 500,
+                        onChanged: (value) {
+                          journalController.typeCounterEdit.value++;
+                        },
+                        decoration: InputDecoration(
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          hintText:
+                              '${'todays_messages'.tr.capitalizeFirst}....',
+                          hintStyle: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(color: AppColors.greyColor),
+                        ),
+                      ),
+                    ),
+                  ],
                 )
-              : SelectableText(
-                  journalController.storyMessage.value,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(fontWeight: FontWeight.bold),
-                  maxLines: 100000000000000,
+              : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SelectableText(
+                      journalController.storyTitle.value,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Expanded(
+                      child: SelectableText(
+                        journalController.storyMessage.value,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(fontWeight: FontWeight.bold),
+                        maxLines: 100000000000000,
+                      ),
+                    ),
+                  ],
                 ),
         ),
       ),
