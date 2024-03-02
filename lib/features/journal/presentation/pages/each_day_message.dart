@@ -138,7 +138,7 @@ class _EachDayMessageState extends State<EachDayMessage> {
                       journalController.storyTitle.value,
                       style: Theme.of(context)
                           .textTheme
-                          .headlineMedium!
+                          .headlineLarge!
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
                     Expanded(

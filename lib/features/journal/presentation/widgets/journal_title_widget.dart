@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,16 +26,16 @@ class JournalTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Color> colors = [
-      const Color(0xFF596EFF),
-      const Color(0xFFFC5A20),
-      const Color(0xFFFC3165)
-    ];
-    Random random = Random();
+    // List<Color> colors = [
+    //   const Color(0xFF596EFF),
+    //   const Color(0xFFFC5A20),
+    //   const Color(0xFFFC3165)
+    // ];
+    // Random random = Random();
 
-    int randomIndex = random.nextInt(colors.length);
+    // int randomIndex = random.nextInt(colors.length);
 
-    Color randomColor = colors[randomIndex];
+    // Color randomColor = colors[randomIndex];
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -78,7 +77,7 @@ class JournalTitleWidget extends StatelessWidget {
             children: <Widget>[
               Text(
                 title,
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: isTablet() ? Theme.of(context).textTheme.headlineMedium : Theme.of(context).textTheme.headlineSmall,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
               ),

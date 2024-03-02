@@ -71,19 +71,17 @@ class EachDayStory extends StatelessWidget {
               if (title!.isNotEmpty)
                 Text(
                   title.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall!
-                      .copyWith(fontSize: 16.sp),
+                  style: isTablet()
+                      ? Theme.of(context).textTheme.headlineMedium
+                      : Theme.of(context).textTheme.headlineSmall,
                   overflow: TextOverflow.ellipsis,
                 )
               else
                 Text(
                   date,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall!
-                      .copyWith(fontSize: 16.sp),
+                  style: isTablet()
+                      ? Theme.of(context).textTheme.headlineMedium
+                      : Theme.of(context).textTheme.headlineSmall,
                   overflow: TextOverflow.ellipsis,
                 ),
               SizedBox(height: 2.h),
