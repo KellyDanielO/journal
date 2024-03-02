@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:in_app_update/in_app_update.dart';
+// import 'package:get/get.dart';
+// import 'package:in_app_update/in_app_update.dart';
 import 'package:intl/intl.dart';
 
 bool isTablet() {
@@ -15,18 +15,18 @@ bool isTablet() {
   return diagonalSize >= 800;
 }
 
-Future<bool> checkForUpdate() async {
-  if (!GetPlatform.isLinux) {
-    AppUpdateInfo check = await InAppUpdate.checkForUpdate();
-    if (check.updateAvailability == UpdateAvailability.updateAvailable) {
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    return false;
-  }
-}
+// Future<bool> checkForUpdate() async {
+//   if (!GetPlatform.isLinux) {
+//     AppUpdateInfo check = await InAppUpdate.checkForUpdate();
+//     if (check.updateAvailability == UpdateAvailability.updateAvailable) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   } else {
+//     return false;
+//   }
+// }
 
 String getCurrentLocale(BuildContext context) {
   // You can also use Localizations.localeOf(context) to get the current locale

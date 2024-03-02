@@ -13,7 +13,7 @@ actionToast(String message) {
       gravity: ToastGravity.SNACKBAR,
       timeInSecForIosWeb: 1,
       backgroundColor: AppColors.primaryColor,
-      textColor: AppColors.whiteColor,
+      textColor: AppColors.blackColor,
       fontSize: isTablet() ? 8.sp : 14.sp,
     );
   }
