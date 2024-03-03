@@ -40,6 +40,19 @@ class _SplashScreenState extends State<SplashScreen> {
     } else {
       utitlityController.changeLanguage(const Locale('en', 'US'), 'english');
     }
+
+    String? getTheme = await appHandler.getTheme();
+    if (getTheme != null) {
+      if (getTheme == 'light') {
+        utitlityController.themeMode.value = ThemeMode.light;
+      } else if (getTheme == 'dark') {
+        utitlityController.themeMode.value = ThemeMode.dark;
+      } else {
+        utitlityController.themeMode.value = ThemeMode.system;
+      }
+    } else {
+      utitlityController.themeMode.value = ThemeMode.light;
+    }
   }
 
   @override
@@ -50,7 +63,10 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: SizedBox(
           width: width * .5,
-          child: Image.asset('assets/images/logo.png', fit:  BoxFit.cover,),
+          child: Image.asset(
+            'assets/images/logo.png',
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

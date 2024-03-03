@@ -23,8 +23,10 @@ import '../../../domain/usecases/get_journal_topic_days.dart';
 import '../../../domain/usecases/get_journal_topics_usecase.dart';
 
 class JournalController extends GetxController {
+  TextEditingController createTitleInputController = TextEditingController();
   TextEditingController createInputController = TextEditingController();
   Rx<TextEditingController> editInputController = TextEditingController().obs;
+  Rx<TextEditingController> editTitleInputController = TextEditingController().obs;
   RxBool textFieldEmpty = true.obs;
   RxBool textFieldEditEmpty = true.obs;
   RxInt typeCounter = 0.obs;
@@ -32,6 +34,7 @@ class JournalController extends GetxController {
 
   RxBool editDayMode = false.obs;
   RxString storyMessage = ''.obs;
+  RxString storyTitle = ''.obs;
 
   RxList<JournalTopicEntity> journalTopicValues = <JournalTopicEntity>[].obs;
   RxList<JournalDayEntity> journalDayValues = <JournalDayEntity>[].obs;
@@ -122,30 +125,36 @@ class JournalController extends GetxController {
 
   Future<void> createJournalDay(String id) async {
     String message = createInputController.value.text;
+    String title = createTitleInputController.value.text;
     if (message.isNotEmpty) {
       String date = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
       JournalDayEntity journalTopicDay =
-          JournalDayEntity(date: date, message: message, subTitle: '');
+          JournalDayEntity(date: date, message: message, subTitle: title);
 
       createJournalTopicDayUseCase.call(id, journalTopicDay);
       await getJournalTopicDays(id);
       createInputController.text = '';
+      createTitleInputController.text = '';
+      createTitleInputController.clear();
       createInputController.clear();
       Get.back();
     }
   }
 
   Future<void> editJournalDay(String id, String date) async {
+    String title = editTitleInputController.value.text;
     String message = editInputController.value.text;
     if (message.isNotEmpty) {
       JournalDayEntity journalTopicDay =
-          JournalDayEntity(date: date, message: message, subTitle: '');
+          JournalDayEntity(date: date, message: message, subTitle: title);
 
       editJournalTopicDayUseCase.call(id, journalTopicDay);
       storyMessage.value = message;
       editInputController.value.text = '';
+      editTitleInputController.value.text = '';
       editInputController.value.clear();
+      editTitleInputController.value.clear();
       await getJournalTopicDays(id);
     }
   }

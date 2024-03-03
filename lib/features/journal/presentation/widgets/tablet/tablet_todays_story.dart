@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../../core/helpers/app_assets.dart';
+import '../../../../../core/helpers/functions.dart';
 import '../../../../../core/helpers/sizes.dart';
 import '../../../../../core/router/router_config.dart';
 import '../../../../../core/themes/colors.dart';
@@ -63,8 +63,10 @@ class _TabletTodaysStoryState extends State<TabletTodaysStory> {
         children: <Widget>[
           Container(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            decoration:  BoxDecoration(
-            color: Theme.of(context).textTheme.labelSmall!.backgroundColor,),
+            decoration: BoxDecoration(
+              color: Theme.of(context).textTheme.labelSmall!.backgroundColor,
+            ),
+            width: width,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -85,15 +87,20 @@ class _TabletTodaysStoryState extends State<TabletTodaysStory> {
                     ),
                     SizedBox(width: 1.w),
                     Obx(
-                      () => Text(
-                        journalController.seleectedTitle.value,
-                        style: Theme.of(context).textTheme.headlineMedium,
+                      () => ConstrainedBox(
+                        constraints: BoxConstraints(maxWidth: width * .3),
+                        child: Text(
+                          journalController.seleectedTitle.value,
+                          style: Theme.of(context).textTheme.headlineMedium,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                   ],
                 ),
                 IconButton.filled(
-                  onPressed: () => journalController.moveToCreate(journalController.selectedId.value),
+                  onPressed: () => journalController
+                      .moveToCreate(journalController.selectedId.value),
                   padding: const EdgeInsets.all(5),
                   icon: HeroIcon(
                     HeroIcons.pencil,
@@ -132,11 +139,11 @@ class _TabletTodaysStoryState extends State<TabletTodaysStory> {
                       itemBuilder: (context, index) {
                         final m = journalController.journalDayValues[index];
                         return EachDayStory(
-                          title: DateFormat.yMMMMEEEEd()
-                              .format(DateTime.parse(m.date))
-                              .toString(),
+                          date: regularDateFormat(DateTime.parse(m.date),
+                              getCurrentLocale(context)),
                           width: width,
                           message: m.message,
+                          title: m.subTitle,
                           id: id,
                           journalDay: m,
                           onTap: () => Get.toNamed(

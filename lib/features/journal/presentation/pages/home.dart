@@ -31,11 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
     double height = ScreenUtil().screenHeight;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(
           utitlityController.titleType(),
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontFamily: 'Aclonica'),
         ),
       ),
       body: SizedBox(

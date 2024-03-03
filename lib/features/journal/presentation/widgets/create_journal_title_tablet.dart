@@ -36,7 +36,7 @@ FittedBox createJournalTitleTablet(BuildContext context, double width) {
                 autofocus: true,
                 controller: journalController.createInputController,
                 style: Theme.of(context).textTheme.headlineMedium,
-                maxLength: 80,
+                maxLength: 100,
                 decoration: InputDecoration(
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
