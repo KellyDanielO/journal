@@ -40,9 +40,9 @@ String regularDateFormat(
   DateTime currentDate = DateTime.now();
   String formattedDate;
   if (currentDate.year > dateTime.year) {
-    formattedDate = DateFormat.yMMMMEEEEd(currentLocale).format(currentDate);
+    formattedDate = DateFormat.yMMMMEEEEd(currentLocale).format(dateTime);
   } else {
-    formattedDate = DateFormat.MMMMEEEEd(currentLocale).format(currentDate);
+    formattedDate = DateFormat.MMMMEEEEd(currentLocale).format(dateTime);
   }
 
   return formattedDate;
