@@ -26,16 +26,6 @@ class JournalTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List<Color> colors = [
-    //   const Color(0xFF596EFF),
-    //   const Color(0xFFFC5A20),
-    //   const Color(0xFFFC3165)
-    // ];
-    // Random random = Random();
-
-    // int randomIndex = random.nextInt(colors.length);
-
-    // Color randomColor = colors[randomIndex];
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(

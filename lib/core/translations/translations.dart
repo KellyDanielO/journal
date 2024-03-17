@@ -34,7 +34,10 @@ class Langauages extends Translations {
           'edited': 'edited',
           'system': 'system',
           'light': 'light',
-          'dark': 'dark'
+          'dark': 'dark',
+          // update
+          'task': 'task',
+          // ''
         },
         'fr_FR': {
           'select_gender': 'sélectionner le genre',
